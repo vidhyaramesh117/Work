@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/llchat"
-    android:background="#0bbf3b"
+    android:background="#22dde3"
     tools:context=".chat_Fragment">
 
     <FrameLayout

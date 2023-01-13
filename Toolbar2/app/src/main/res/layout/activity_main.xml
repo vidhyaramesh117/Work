@@ -1,31 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start"
+    android:id="@+id/nav_drawer"
     tools:context=".MainActivity">
-    <com.google.android.material.appbar.AppBarLayout
+
+    <include
+        layout="@layout/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/purple_500">
+        android:layout_height="match_parent"/>
 
-        <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tb">
-        </androidx.appcompat.widget.Toolbar>
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:id="@+id/nav_view"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/nav_items">
 
-        <com.google.android.material.tabs.TabLayout
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:id="@+id/tab" />
+    </com.google.android.material.navigation.NavigationView>
 
-        <androidx.viewpager.widget.ViewPager
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/vp" />
-    </com.google.android.material.appbar.AppBarLayout>
-
-</LinearLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
