@@ -1,5 +1,6 @@
 package com.example.whatsapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -24,5 +25,7 @@ public class Profile_Fragment extends Fragment
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile_, container, false);
+
     }
+
 }

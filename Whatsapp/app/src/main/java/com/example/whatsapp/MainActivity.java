@@ -15,6 +15,8 @@ import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity
@@ -22,15 +24,21 @@ public class MainActivity extends AppCompatActivity
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    BottomNavigationView bottomNavigationView;
+    Personal_Fragment personal_fragment;
+    Group_Fragment group_fragment;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         drawerLayout = findViewById(R.id.nav_drawer);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
+        bottomNavigationView = findViewById(R.id.bottom_nav);
+
 
         setSupportActionBar(toolbar);
 
@@ -38,7 +46,8 @@ public class MainActivity extends AppCompatActivity
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener()
+        {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item)
             {
@@ -50,7 +59,8 @@ public class MainActivity extends AppCompatActivity
 
                 }
                 else if (id==R.id.cloud)
-                {Toast.makeText(MainActivity.this, "Cloud storage", Toast.LENGTH_SHORT).show();
+                {
+                    Toast.makeText(MainActivity.this, "Cloud storage", Toast.LENGTH_SHORT).show();
                 }
                 else if (id==R.id.logout)
                 {
@@ -63,7 +73,28 @@ public class MainActivity extends AppCompatActivity
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             }
-    });
+        });
+        Fragment fragment = new Personal_Fragment();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.llcontent,fragment).commit();
+
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item)
+            {
+                switch (item.getItemId())
+                {
+                    case R.id.personal:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.bottom_content,fragment).commit();
+                        return true;
+                    case R.id.group:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.bottom_content,fragment).commit();
+                        return true;
+                }
+                return false;
+            }
+        });
+
 
     }
 

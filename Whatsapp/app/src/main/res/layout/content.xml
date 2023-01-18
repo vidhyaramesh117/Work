@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:id="@+id/llcontent"
     android:orientation="vertical">
 
     <FrameLayout
@@ -11,6 +11,9 @@
         android:layout_height="match_parent"
         android:id="@+id/contents"
         android:orientation="vertical">
+
+
+
     </FrameLayout>
 
 
