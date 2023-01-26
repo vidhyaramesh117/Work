@@ -9,12 +9,17 @@
     android:gravity="center"
     tools:context=".settings_Fragment">
 
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Settings"
-        android:textSize="25dp"
-        android:textStyle="bold"/>
+        android:id="@+id/time_tv"
+        android:text="Time displays"
+        android:textSize="25dp"  />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/time_btn"
+        android:text="Pick Time" />
 
 </LinearLayout>
