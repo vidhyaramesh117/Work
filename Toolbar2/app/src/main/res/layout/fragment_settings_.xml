@@ -13,7 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/time_tv"
-        android:text="Time displays"
+        android:textColor="@color/black"
+        android:text="Time"
         android:textSize="25dp"  />
 
     <Button
@@ -21,5 +22,20 @@
         android:layout_height="wrap_content"
         android:id="@+id/time_btn"
         android:text="Pick Time" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/date_tv"
+        android:paddingTop="50dp"
+        android:textColor="@color/black"
+        android:text="Date"
+        android:textSize="25dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/date_btn"
+        android:text="Pick Date" />
 
 </LinearLayout>

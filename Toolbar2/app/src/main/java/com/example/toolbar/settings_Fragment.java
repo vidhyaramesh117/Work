@@ -1,5 +1,6 @@
 package com.example.toolbar;
 
+import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -20,19 +22,24 @@ import java.util.TimeZone;
 
 public class settings_Fragment extends Fragment
 {
-    TextView textView;
-    Button button;
+    TextView time;
+    Button timebtn;
     View rootview;
+    TextView date;
+    Button datebtn;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootview = inflater.inflate(R.layout.fragment_settings_, container, false);
 
-        textView = rootview.findViewById(R.id.time_tv);
-        button = rootview.findViewById(R.id.time_btn);
+        time = rootview.findViewById(R.id.time_tv);
+       timebtn = rootview.findViewById(R.id.time_btn);
+       date = rootview.findViewById(R.id.date_tv);
+       datebtn = rootview.findViewById(R.id.date_btn);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        timebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {
@@ -58,12 +65,33 @@ public class settings_Fragment extends Fragment
                         {
                             AM_PM = "PM";
                         }
-                        textView.setText( hourOfDay + ":" + minOfDay+" "+AM_PM);
+                        time.setText( "Time: "+hourOfDay + ":" + minOfDay+" "+AM_PM);
                     }
                 },hour,min,false);
                 timePickerDialog.show();
             }
             });
+
+        datebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                final Calendar c = Calendar.getInstance();
+
+                int year = c.get(Calendar.YEAR);
+                int month = c.get(Calendar.MONTH);
+                int day = c.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int monthofyear, int dateofmonth)
+                    {
+                        date.setText("Date: "+dateofmonth+"-"+(monthofyear+1)+"-"+year);
+                    }
+                },year,month,day);
+                datePickerDialog.show();
+            }
+        });
 
         return rootview;
 
