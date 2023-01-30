@@ -78,7 +78,13 @@ public class settings_Fragment extends Fragment
                         {
                             AM_PM = "PM";
                         }
-                        time.setText( "Picked Time: "+hourOfDay + ":" + minOfDay+" "+AM_PM);
+                        if(minOfDay<10){
+                            time.setText( "Picked Time: "+hourOfDay + ":0" + minOfDay+" "+AM_PM);
+                        }
+                        else {
+                            time.setText( "Picked Time: "+hourOfDay + ":" + minOfDay+" "+AM_PM);
+                        }
+
                     }
 
                   
