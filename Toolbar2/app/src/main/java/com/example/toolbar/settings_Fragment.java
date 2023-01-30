@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,19 +28,26 @@ public class settings_Fragment extends Fragment
     View rootview;
     TextView date;
     Button datebtn;
+    TextView current_date;
+    TextView current_time;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState)
+    {
         rootview = inflater.inflate(R.layout.fragment_settings_, container, false);
 
         time = rootview.findViewById(R.id.time_tv);
        timebtn = rootview.findViewById(R.id.time_btn);
        date = rootview.findViewById(R.id.date_tv);
        datebtn = rootview.findViewById(R.id.date_btn);
+       current_date = rootview.findViewById(R.id.cur_date);
+       current_time = rootview.findViewById(R.id.cur_time);
 
-        timebtn.setOnClickListener(new View.OnClickListener() {
+
+        timebtn.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View view)
             {
@@ -48,10 +56,15 @@ public class settings_Fragment extends Fragment
                 int hour = c.get(Calendar.HOUR_OF_DAY);
                 int min = c.get(Calendar.MINUTE);
 
+                SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+                String strtime = "Current Time: "+format.format(c.getTime());
+                display(strtime);
+
                 TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
-                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minOfDay) {
-                        String AM_PM = null;
+                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minOfDay)
+                    {
+                        String AM_PM =null;
                         if(hourOfDay>12)
                         {
                             hourOfDay=(hourOfDay-12);
@@ -65,8 +78,10 @@ public class settings_Fragment extends Fragment
                         {
                             AM_PM = "PM";
                         }
-                        time.setText( "Time: "+hourOfDay + ":" + minOfDay+" "+AM_PM);
+                        time.setText( "Picked Time: "+hourOfDay + ":" + minOfDay+" "+AM_PM);
                     }
+
+                  
                 },hour,min,false);
                 timePickerDialog.show();
             }
@@ -82,11 +97,13 @@ public class settings_Fragment extends Fragment
                 int month = c.get(Calendar.MONTH);
                 int day = c.get(Calendar.DAY_OF_MONTH);
 
+                current_date.setText("Today: "+year+"-"+(month+1)+"-"+day);
+
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int monthofyear, int dateofmonth)
                     {
-                        date.setText("Date: "+dateofmonth+"-"+(monthofyear+1)+"-"+year);
+                        date.setText("Picked Date: "+dateofmonth+"-"+(monthofyear+1)+"-"+year);
                     }
                 },year,month,day);
                 datePickerDialog.show();
@@ -96,5 +113,12 @@ public class settings_Fragment extends Fragment
         return rootview;
 
 
+    }
+
+
+    private void display(String strtime)
+    {
+        current_time.setText(strtime);
+        Log.i("settings_Fragment","qwerty");
     }
 }
