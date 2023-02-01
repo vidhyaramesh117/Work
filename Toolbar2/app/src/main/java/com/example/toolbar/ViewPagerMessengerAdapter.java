@@ -25,6 +25,18 @@ class ViewPageMessengerAdapter extends FragmentPagerAdapter
         {
             return new status_Fragment();
         }
+        else if(position==2)
+        {
+            return new calls_Fragment();
+        }
+        else if(position==3)
+        {
+            return new fav_Fragment();
+        }
+        else if(position==4)
+        {
+            return new stared_Fragment();
+        }
         else
         {
             return new calls_Fragment();
@@ -34,7 +46,7 @@ class ViewPageMessengerAdapter extends FragmentPagerAdapter
     @Override
     public int getCount()
     {
-        return 3;
+        return 6;
     }
 
     //getpagetitle
@@ -49,9 +61,21 @@ class ViewPageMessengerAdapter extends FragmentPagerAdapter
         {
             return "Status";
         }
-        else
+        else if(position==2)
         {
             return "Calls";
+        }
+        else if (position==3)
+        {
+            return "Favourites";
+        }
+        else if(position==4)
+        {
+            return "Stared msges";
+        }
+        else
+        {
+            return "Status";
         }
     }
 }
