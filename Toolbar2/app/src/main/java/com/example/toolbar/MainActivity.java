@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity
             {
                 Intent intent=new Intent(MainActivity.this,Navigation_drawer.class);
                 startActivity(intent);
+
+                finish();
             }
         },4000);
 
