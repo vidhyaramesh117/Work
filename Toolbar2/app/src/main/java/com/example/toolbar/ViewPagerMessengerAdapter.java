@@ -39,7 +39,7 @@ class ViewPageMessengerAdapter extends FragmentPagerAdapter
         }
         else
         {
-            return new calls_Fragment();
+            return new download_Fragment();
         }
     }
 
@@ -75,7 +75,7 @@ class ViewPageMessengerAdapter extends FragmentPagerAdapter
         }
         else
         {
-            return "Status";
+            return "Download";
         }
     }
 }
