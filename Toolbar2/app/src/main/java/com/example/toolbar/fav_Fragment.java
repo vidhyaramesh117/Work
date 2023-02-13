@@ -9,11 +9,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class fav_Fragment extends Fragment {
+public class fav_Fragment extends Fragment
+{
     CheckBox ch1, ch2, ch3, ch4;
     Button button;
+    TextView toasttext;
+    RadioGroup radioGroup;
+    TextView textView;
+
     View rootview;
 
     @Override
@@ -22,6 +30,18 @@ public class fav_Fragment extends Fragment {
     {
         rootview = inflater.inflate(R.layout.fragment_fav_, container, false);
         addListenerOnButtonClick();
+        radioGroup = rootview.findViewById(R.id.radio_grp);
+        textView = rootview.findViewById(R.id.radio_tv);
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checkedId)
+            {
+                RadioButton radioButton = radioGroup.findViewById(checkedId);
+                textView.setText(radioButton.getText());
+            }
+        });
         return rootview;
 
     }
@@ -33,8 +53,10 @@ public class fav_Fragment extends Fragment {
         ch2 = rootview.findViewById(R.id.ch_na);
         ch3 = rootview.findViewById(R.id.ch_ai);
         ch4 = rootview.findViewById(R.id.ch_ab);
+        toasttext = rootview.findViewById(R.id.toast_tv);
         button = rootview.findViewById(R.id.ch_btn);
-
+        LayoutInflater layoutInflater = getLayoutInflater();
+        View layout = layoutInflater.inflate(R.layout.custom_toast,(ViewGroup) rootview.findViewById(R.id.cus_toast));
         button.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -62,10 +84,14 @@ public class fav_Fragment extends Fragment {
                     msg.append("Abel \t");
 
                 }
+//                    Toast toast = new Toast(getContext());
+//                    toast.setDuration(Toast.LENGTH_LONG);
+//                    toast.setView(layout);
+//                    toast.show();
+
                 Toast.makeText(getContext(),msg.toString(), Toast.LENGTH_LONG).show();
             }
         });
-
-
     }
+
 }
