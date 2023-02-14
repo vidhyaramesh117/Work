@@ -13,4 +13,13 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="switch_color" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+<!--        Time of active-->
+        <item name="colorControlActivated">@color/black</item>
+<!--        Time of inactive-->
+        <item name="colorSwitchThumbNormal">#ADD8E6</item>
+<!--        Background color-->
+        <item name="android:colorForeground">#808080</item>
+    </style>
 </resources>

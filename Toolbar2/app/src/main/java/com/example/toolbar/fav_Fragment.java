@@ -9,8 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +22,9 @@ public class fav_Fragment extends Fragment
     Button button;
     TextView toasttext;
     RadioGroup radioGroup;
-    TextView textView;
+    TextView radiotext;
+    Switch swit;
+    TextView swittext;
 
     View rootview;
 
@@ -31,7 +35,9 @@ public class fav_Fragment extends Fragment
         rootview = inflater.inflate(R.layout.fragment_fav_, container, false);
         addListenerOnButtonClick();
         radioGroup = rootview.findViewById(R.id.radio_grp);
-        textView = rootview.findViewById(R.id.radio_tv);
+        radiotext = rootview.findViewById(R.id.radio_tv);
+        swit = rootview.findViewById(R.id.swit);
+        swittext = rootview.findViewById(R.id.swit_tv);
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
@@ -39,9 +45,36 @@ public class fav_Fragment extends Fragment
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId)
             {
                 RadioButton radioButton = radioGroup.findViewById(checkedId);
-                textView.setText(radioButton.getText());
+                radiotext.setText(radioButton.getText());
             }
         });
+
+        if(swit.isChecked())
+        {
+            swittext.setText("Online");
+        }
+        else
+        {
+            swittext.setText("Offline");
+        }
+
+        swit.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean ischecked)
+            {
+                if(ischecked)
+                {
+                    swittext.setText("Online");
+                }
+                else
+                {
+                    swittext.setText("Offline");
+                }
+
+            }
+        });
+
         return rootview;
 
     }
