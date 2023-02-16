@@ -16,7 +16,8 @@
             android:layout_height="?attr/actionBarSize"
             android:id="@+id/tab"
             android:background="#2b9ae3"
-            app:tabMode="scrollable" />
+            app:tabMode="scrollable"
+            app:tabInlineLabel="true"/>
 
         <androidx.viewpager.widget.ViewPager
             android:layout_width="match_parent"

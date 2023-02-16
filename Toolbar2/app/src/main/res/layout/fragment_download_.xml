@@ -9,6 +9,12 @@
     android:id="@+id/lldwonload"
     tools:context=".download_Fragment">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" "
+        android:paddingBottom="47dp" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,7 +22,30 @@
         android:layout_gravity="center"
         android:text="Download"
         android:textSize="15dp"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:background="@color/black" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" "
+        android:paddingBottom="47dp" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/swipe_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Error loading"
+            android:textSize="25dp" />
+
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
 
