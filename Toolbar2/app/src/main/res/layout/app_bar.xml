@@ -15,9 +15,9 @@
             android:id="@+id/tb">
         </androidx.appcompat.widget.Toolbar>
 
-    </com.google.android.material.appbar.AppBarLayout>
+        <include
+            layout="@layout/tab" />
 
-    <include
-        layout="@layout/tab" />
+    </com.google.android.material.appbar.AppBarLayout>
 
 </LinearLayout>

@@ -12,7 +12,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,6 +32,16 @@ public class Navigation_drawer extends AppCompatActivity
     NavigationView navigationView;
     private Fragment fragment;
 
+    private int[] tabicons=
+            {
+                    R.drawable.chats,
+                    R.drawable.status,
+                    R.drawable.calls,
+                    R.drawable.fav,
+                    R.drawable.stared,
+                    R.drawable.download
+            };
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -45,9 +54,12 @@ public class Navigation_drawer extends AppCompatActivity
         tabLayout = findViewById(R.id.tab);
         viewPager = findViewById(R.id.vp);
 
-        ViewPageMessengerAdapter adapter = new ViewPageMessengerAdapter(getSupportFragmentManager());
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
+        setViewpager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
+        setTabicons();
+
 
         setSupportActionBar(toolbar);
         if(getSupportActionBar()!=null)
@@ -56,6 +68,7 @@ public class Navigation_drawer extends AppCompatActivity
             getSupportActionBar().setTitle("WHATSAPP");
         }
         toolbar.setSubtitle("");
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.OpenDrawer,R.string.CloseDraw);
 
         drawerLayout.addDrawerListener(toggle);
@@ -85,6 +98,31 @@ public class Navigation_drawer extends AppCompatActivity
         });
 
     }
+
+
+
+    private void setViewpager(ViewPager viewPager)
+    {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter .addFragment(new chat_Fragment(),"Chats");
+        adapter .addFragment(new status_Fragment(),"Status");
+        adapter .addFragment(new calls_Fragment(),"Calls");
+        adapter .addFragment(new fav_Fragment(),"Favourite");
+        adapter .addFragment(new stared_Fragment(),"Stared msges");
+        adapter .addFragment(new download_Fragment(),"Download");
+        viewPager.setAdapter(adapter);
+    }
+
+    private void setTabicons()
+    {
+        tabLayout.getTabAt(0).setIcon(tabicons[0]);
+        tabLayout.getTabAt(1).setIcon(tabicons[1]);
+        tabLayout.getTabAt(2).setIcon(tabicons[2]);
+        tabLayout.getTabAt(3).setIcon(tabicons[3]);
+        tabLayout.getTabAt(4).setIcon(tabicons[4]);
+//        tabLayout.getTabAt(5).setIcon(tabicons[5]);
+    }
+
 
     @Override
     public void onBackPressed()
