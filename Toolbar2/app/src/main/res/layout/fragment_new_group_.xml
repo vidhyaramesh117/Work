@@ -9,12 +9,6 @@
     android:gravity="center"
     tools:context=".new_group_Fragment">
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New group"
-        android:textSize="25dp"
-        android:textStyle="bold"/>
+    
 
 </LinearLayout>
