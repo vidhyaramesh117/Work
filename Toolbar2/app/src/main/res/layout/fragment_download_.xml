@@ -3,17 +3,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#22dde3"
     android:orientation="vertical"
     android:gravity="center"
     android:id="@+id/lldwonload"
     tools:context=".download_Fragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" "
-        android:paddingBottom="47dp" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="15dp"
+        app:cardCornerRadius="15dp"
+        android:layout_margin="1dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true" >
+
+        <ImageView
+            android:layout_width="340dp"
+            android:layout_height="150dp"
+            android:id="@+id/card_img"
+            android:src="@drawable/download_link"
+            android:layout_gravity="center" />
+
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:layout_width="wrap_content"
@@ -25,11 +40,6 @@
         android:textColor="@color/white"
         android:background="@color/black" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" "
-        android:paddingBottom="47dp" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh"
