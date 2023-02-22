@@ -19,4 +19,5 @@
         android:layout_alignParentBottom="true"
         android:id="@+id/bn"
         app:menu="@menu/bottom_nav_items"/>
+
 </RelativeLayout>
