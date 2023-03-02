@@ -9,13 +9,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -49,6 +46,7 @@ public class nav_drawer extends AppCompatActivity
             getSupportActionBar().setTitle("Whatsapp");
         }
 
+//Navigation drawer
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.nav_open,R.string.nav_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
@@ -87,6 +85,7 @@ public class nav_drawer extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
+//                Snackbar given
 //                Snackbar.make(v,"Chat",Snackbar.LENGTH_LONG).setAction("Action",null).show();
                 Intent intent = new Intent(getApplicationContext(),Contacts.class);
                 startActivity(intent);
@@ -112,15 +111,5 @@ public class nav_drawer extends AppCompatActivity
         fragmentTransaction.add(R.id.nav_content, fragment);
         fragmentTransaction.commit();
     }
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item)
-//    {
-//        if (actionBarDrawerToggle.onOptionsItemSelected(item))
-//        {
-//            return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
-
 
 }
