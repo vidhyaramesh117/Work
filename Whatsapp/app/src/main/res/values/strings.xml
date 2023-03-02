@@ -14,4 +14,9 @@
       Our success stories include a lot of students who benefitted in their placements
       and landed jobs at tech giants. Our vision is to build a gigantic network of
       geeks and we are only a fraction of it yet.</string>
+
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
